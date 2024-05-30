@@ -33,6 +33,4 @@
 
 5. Acesse a aplicação em `http://localhost:3000`.
 
-6. Caso necessário altere o .env (Opcional)
-
-7. Acesse a documentação da aplicação em: `http://localhost:3000/api-docs`
+6. Acesse a documentação da aplicação em: `http://localhost:3000/api-docs`
