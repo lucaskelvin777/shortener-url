@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://${process.env.URL_MONGODB}`, {});
+mongoose.connect(`${process.env.URL_MONGODB}`, {});
 const urlSchema = new mongoose.Schema({
     originalUrl: String,
     shortUrl: String,
