@@ -10,7 +10,7 @@ async function ShortenController(req, res) {
             id: url.id,
             originalUrl: url.originalUrl,
             shortUrl: url.shortUrl,
-            fullShortUrl: `${process.env.HOST}:${process.env.PORT}/${url.shortUrl}`
+            fullShortUrl: `${process.env.FULL_HOST}/${url.shortUrl}`
         });
     }
     else {
@@ -21,7 +21,7 @@ async function ShortenController(req, res) {
             id: newUrl.id,
             originalUrl: newUrl.originalUrl,
             shortUrl: newUrl.shortUrl,
-            fullShortUrl: `${process.env.HOST}:${process.env.PORT}/${shortUrl}`
+            fullShortUrl: `${process.env.FULL_HOST}/${shortUrl}`
         });
     }
 }
@@ -65,7 +65,7 @@ async function GetAllByDate(req, res) {
                 id: url.id,
                 originalUrl: url.originalUrl,
                 shortUrl: url.shortUrl,
-                fullShortUrl: `${process.env.HOST}:${process.env.PORT}/${url.shortUrl}`
+                fullShortUrl: `${process.env.FULL_HOST}/${url.shortUrl}`
             };
         });
         res.json(result);
