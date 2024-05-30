@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: Shortener URL API
+  version: 1.0.0
+  description: API para encurtar URLs
+
+paths:
+  /shorten:
+    post:
+      summary: Encurtar uma URL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originalUrl:
+                  type: string
+              required:
+                - originalUrl
+      responses:
+        '200':
+          description: URL encurtada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  originalUrl:
+                    type: string
+                  shortUrl:
+                    type: string
+                  fullShortUrl:
+                    type: string
+  /{id}:
+    get:
+      summary: Redirecionar para a URL original usando o shortUrl
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirecionamento
+  /id/{id}:
+    get:
+      summary: Redirecionar para a URL original usando o ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirecionamento
+  /all/{date}:
+    get:
+      summary: Obter todas as URLs para uma data específica
+      parameters:
+        - in: path
+          name: date
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: URLs encontradas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    originalUrl:
+                      type: string
+                    shortUrl:
+                      type: string
+                    fullShortUrl:
+                      type: string
+        '404':
+          description: Nenhuma URL encontrada para a data especificada
